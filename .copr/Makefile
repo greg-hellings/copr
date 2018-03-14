@@ -1,6 +1,7 @@
 srpm:
-	set -e ;\
-	URL=$$(rpmspec -P *.spec | awk '/Source/ {print $$2}') ;\
+	set -x ;\
+	URL=$$(rpmspec -P *.spec | awk '/Source:/ {print $$2}') ;\
+	echo "$${URL}" ;\
 	FILE=$$(basename "$${URL}") ;\
 	FILE=$$(echo "$${FILE%\?*}") ;\
 	curl -o "$${FILE}" "$${URL}" ;\

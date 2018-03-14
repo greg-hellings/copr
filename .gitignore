@@ -1,3 +1,10 @@
+# Generic for all builds
 .*.swp
+.*.swo
 results_*
 *.src.rpm
+*.tar.bz2
+.build*.log
+
+# Specific to only one build
+Entropy-Piano-Tuner
