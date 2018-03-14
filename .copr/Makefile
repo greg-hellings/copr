@@ -1,3 +1,3 @@
 srpm:
-	spectool -g qtmidi.spec
-	env
+	spectool -g *.spec
+	rpkg -C /etc/rpkg.conf srpm --outdir "${outdir}" --spec "${spec}"
