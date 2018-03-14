@@ -45,11 +45,12 @@ if [ $? -ne 0 ]; then
 fi
 
 # remove commit number and move files to build dir
-mv "%{PROJECT}-%{BRANCH}"* "%{PROJECT}"
-cd "%{PROJECT}"
+mv "%{PROJECT}-%{BRANCH}"* "%{PROJECT}-%{BRANCH}"
+tar caf "%{SOURCE0}" "%{PROJECT}-%{BRANCH}"
+%autosetup -n "%{PROJECT}-%{BRANCH}"
 
 %build
-qmake-qt5 -r \
+%{qmake_qt5} -r \
 	"EPT_INSTALL_BIN_RDIR=%{_bindir}" \
    	"EPT_INSTALL_DATA_RDIR=%{_datadir}" \
     "EPT_INSTALL_LIB_RDIR=%{_libdir}"
