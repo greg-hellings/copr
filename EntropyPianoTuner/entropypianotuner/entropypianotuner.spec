@@ -26,6 +26,7 @@ BuildRequires:  libuv-devel
 BuildRequires:  qwt-qt5-devel
 Requires:       qt5-qtbase
 Requires:       qt5-qtmultimedia
+Requires:       qt5-qtmidi
 Requires:       fftw3
 Requires:       alsa-lib
 Requires:       libuv
