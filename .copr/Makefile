@@ -4,4 +4,12 @@ srpm:
 	FILE=$$(basename "$${URL}") ;\
 	FILE=$$(echo "$${FILE%\?*}") ;\
 	curl -o "$${FILE}" "$${URL}" ;\
-	rpkg -C /etc/rpkg.conf srpm --outdir "${outdir}" --spec "${spec}"
+	rpmbuild --define "_sourcedir $$(pwd)" \
+	         --define "_specdir $$(pwd)" \
+	         --define "_builddir $$(pwd)" \
+	         --define "_srcrpmdir $$(pwd)" \
+	         --define "_rpmdir $$(pwd)" \
+	         --nodeps \
+	         -bs \
+	         *.spec ;\
+	mv *.src.rpm "${outdir}"
