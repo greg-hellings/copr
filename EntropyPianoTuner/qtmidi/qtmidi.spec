@@ -64,7 +64,7 @@ tar caf %{SOURCE0} "%{container_name}-%{version}"
 %build
 #force the configure script to generate the forwarding headers (it checks whether .git directory exists)
 mkdir .git
-qmake-qt5 -r
+%{qmake_qt5} -r
 make %{?_smp_mflags}
 
 %install
