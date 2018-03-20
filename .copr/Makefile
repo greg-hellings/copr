@@ -4,7 +4,7 @@ srpm:
 	echo "$${URL}" ;\
 	FILE=$$(basename "$${URL}") ;\
 	FILE=$$(echo "$${FILE%\?*}") ;\
-	curl -o "$${FILE}" "$${URL}" ;\
+	curl -L -o "$${FILE}" "$${URL}" ;\
 	rpmbuild --define "_sourcedir $$(pwd)" \
 	         --define "_specdir $$(pwd)" \
 	         --define "_builddir $$(pwd)" \
