@@ -4,8 +4,10 @@
 results_*
 *.src.rpm
 *.tar.bz2
+*.tar.gz
 .build*.log
 *.zip
 
 # Specific to only one build
 Entropy-Piano-Tuner
+packer-*

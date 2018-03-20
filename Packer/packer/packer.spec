@@ -1,34 +1,53 @@
-Name: packer
-Version: 1.2.1
-Release: 1%{?dist}
-Summary: Create machine and container images for multiple platforms
-Group: Development/Tools
-License: MPLv2.0
-URL: https://www.packer.io/
+%global src_base src/github.com/hashicorp
+%global src_dir %{src_base}/%{name}
 
-Source: https://releases.hashicorp.com/packer/%{version}/packer_%{version}_linux_amd64.zip
+Name:		packer
+Version:	1.2.1
+Release:	2%{?dist}
+Summary:	Create machine and container images for multiple platforms
+License:	MPLv2.0
+URL:		https://www.packer.io/
+
+Source:		https://github.com/hashicorp/packer/archive/v%{version}.tar.gz
+
+ExclusiveArch:	%{go_arches}
+
+BuildRequires:	compiler(go-compiler)
+BuildRequires:	golang-github-hashicorp-go-uuid-devel
+BuildRequires:	golang-github-hashicorp-go-checkpoint-devel
+BuildRequires:	golang-github-hashicorp-go-cleanhttp-devel
+BuildRequires:	golang-github-mitchellh-cli-devel-temporary
+BuildRequires:	golang-github-kardianos-osext-devel
 
 %description
 Packer is a tool for creating machine and container images for
-multiple platforms from a single source configuration. 
+multiple platforms from a single source configuration.
 
 %prep
+mkdir -p %{src_base}
+tar xaf %{SOURCE0} -C %{src_base}
+mv %{src_dir}-%{version} %{src_dir}
 
 %build
+export GOPATH=$(pwd):%{gopath}
+cd %{src_dir}
+%gobuild -o bin/packer
 
 %install
-mkdir -p %{buildroot}%{_bindir}
-unzip -o %{SOURCE0} -d %{buildroot}%{_bindir}
-
-# Rename to packerio since packer conflicts with Fedora
-pushd %{buildroot}%{_bindir}
-  mv packer packerio
-popd
+cd %{src_dir}
+install -d %{buildroot}%{_bindir}
+# The name "packer" for the binary competes with other Fedora packages
+install -m 755 bin/packer %{buildroot}%{_bindir}/packerio
 
 %files
-%{_bindir}/*
+%license %{src_dir}/LICENSE
+%doc %{src_dir}/README.md
+%{_bindir}/packerio
 
 %changelog
+* Tue Mar 20 2018 Greg Hellings <greg.hellings@gmail.com> - 1.2.1-2
+- Change to source build
+
 * Tue Mar 20 2018 Greg Hellings <greg.hellings@gmail.com> - 1.2.1-1
 - Update to 1.2.1
 
