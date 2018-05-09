@@ -8,11 +8,12 @@ Summary:        Python wrapper module around the OpenSSL library
 
 License:        Apache License, Version 2.0
 URL:            https://pyopenssl.org/
-Source0:        %{pypi_name}-%{version}-py2.py3-none-any.whl
+Source0:        https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
+BuildRequires:  python2
 BuildRequires:  python2-devel
-BuildRequires:  python2dist(setuptools)
+BuildRequires:  python-setuptools
 
 %description
  pyOpenSSL -- A Python wrapper around the OpenSSL library High-level wrapper
@@ -56,10 +57,9 @@ rm -rf %{pypi_name}.egg-info
 %py2_install
 
 %files -n python2-%{pypi_name}
-%license LICENSE.txt
-%doc DESCRIPTION.rst
-%{python2_sitelib}/OpenSSL.py*
-%{python2_sitelib}/%{pypi_name}
+%license LICENSE
+%doc README.rst
+%{python2_sitelib}/OpenSSL/
 %{python2_sitelib}/%{pypi_name}-%{version}-py?.?.egg-info
 
 %changelog

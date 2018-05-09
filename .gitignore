@@ -11,3 +11,4 @@ results_*
 # Specific to only one build
 Entropy-Piano-Tuner
 packer-*
+pyOpenSSL-*
