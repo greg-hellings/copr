@@ -15,7 +15,7 @@
 %endif
 
 Name:          intellij-idea-community
-Version:       2018.1.4
+Version:       2018.1.5
 Release:       1%{?dist}
 Summary:       Intelligent Java IDE
 License:       ASL 2.0
@@ -105,6 +105,9 @@ fi
 %license license/
 
 %changelog
+* Tue Jul 10 2018 Greg Hellings <greg.hellings@gmail.com> - 2018.1.5-1
+- Update to 2018.1.5
+
 * Tue May 22 2018 Lars Kiesow <lkiesow@uos.de> - 2018.1.4-1
 - Update to 2018.1.4
 
