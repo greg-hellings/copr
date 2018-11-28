@@ -2,8 +2,8 @@
 %global src_dir %{src_base}/%{name}
 
 Name:		packer
-Version:	1.2.1
-Release:	2%{?dist}
+Version:	1.3.2
+Release:	1%{?dist}
 Summary:	Create machine and container images for multiple platforms
 License:	MPLv2.0
 URL:		https://www.packer.io/
@@ -16,7 +16,7 @@ BuildRequires:	compiler(go-compiler)
 BuildRequires:	golang-github-hashicorp-go-uuid-devel
 BuildRequires:	golang-github-hashicorp-go-checkpoint-devel
 BuildRequires:	golang-github-hashicorp-go-cleanhttp-devel
-BuildRequires:	golang-github-mitchellh-cli-devel-temporary
+BuildRequires:	golang-github-mitchellh-cli-devel
 BuildRequires:	golang-github-kardianos-osext-devel
 
 %description
@@ -45,6 +45,9 @@ install -m 755 bin/packer %{buildroot}%{_bindir}/packerio
 %{_bindir}/packerio
 
 %changelog
+* Tue Nov 27 2018 Greg Hellings <greg.hellings@gmail.com> - 1.3.2-1
+- New upstream 1.3.2-1
+
 * Tue Mar 20 2018 Greg Hellings <greg.hellings@gmail.com> - 1.2.1-2
 - Change to source build
 
