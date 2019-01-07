@@ -1,14 +1,16 @@
+# Source from gitlab
+# Change the hash according to the current master branch
+%global BRANCH_DATE 20190107
+%global BRANCH  ee7857ac
+
 Summary:        Entropy Piano Tuner
 Name:           entropypianotuner
 Version:        1.2.0
-Release:        1%{?dist}
+Release:        2.%{BRANCH_DATE}git%{BRANCH}%{?dist}
 License:        GPL-3.0
 URL:            http://www.piano-tuner.org
 
-# Source from gitlab
-# Change the hash according to the current master branch
 # Workaround for source containing a '?' (commend at end)
-%global BRANCH  v1.2.0
 %global ARCHIVE archive.tar.bz2?ref=%BRANCH
 %global OWNER tp3
 %global PROJECT Entropy-Piano-Tuner
@@ -18,7 +20,7 @@ Source1:        %{name}.desktop
 BuildRequires:  fdupes
 BuildRequires:  qt5-qtbase-devel
 BuildRequires:  qt5-qtmultimedia-devel
-BuildRequires:  qt5-qtmidi-devel
+BuildRequires:  qt5-qtmidi-devel > 0.1-2
 BuildRequires:  fftw3-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  alsa-lib-devel
@@ -89,6 +91,10 @@ desktop-file-install \
 
 
 %changelog
+* Mon Jan 07 2019 Greg Hellings <greg.hellings@gmail.com> - 1.2.0-2.20190107gitee7857ac
+- Changed to building from git
+- Set minimum version for qtmidi
+
 * Tue Mar 13 2018 Greg Hellings <greg.hellings@gmail.com> - 1.2.0-1
 - Modified from upstream multi-build version to latest Fedora
 
