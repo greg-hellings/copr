@@ -14,9 +14,11 @@ URL:            http://www.piano-tuner.org
 %global ARCHIVE archive.tar.bz2?ref=%BRANCH
 %global OWNER tp3
 %global PROJECT Entropy-Piano-Tuner
+%global tp3log_ref d0310d65
 
-Source:         https://gitlab.com/%OWNER/%PROJECT/repository/%ARCHIVE #/archive.tar.bz2
+Source:         https://gitlab.com/%OWNER/%PROJECT/repository/%ARCHIVE #/Entropy-Piano-Tuner.tar.bz2
 Source1:        %{name}.desktop
+Source101:      https://gitlab.com/tp3/tp3log/repository/archive.tar.bz2?ref=%{tp3log_ref} #/tp3log.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  qt5-qtbase-devel
 BuildRequires:  qt5-qtmultimedia-devel
@@ -45,9 +47,12 @@ tar xaf "%{SOURCE0}"
 if [ $? -ne 0 ]; then
   exit $?
 fi
+tar xaf "%{SOURCE101}"
 
 # remove commit number and move files to build dir
-mv "%{PROJECT}-%{BRANCH}"* "%{PROJECT}-%{BRANCH}"
+mv "%{PROJECT}-%{BRANCH}-"* "%{PROJECT}-%{BRANCH}"
+rmdir "%{PROJECT}-%{BRANCH}/thirdparty/tp3log"
+mv "tp3log-%{tp3log_ref}-"* "%{PROJECT}-%{BRANCH}/thirdparty/tp3log"
 tar caf "%{SOURCE0}" "%{PROJECT}-%{BRANCH}"
 %autosetup -n "%{PROJECT}-%{BRANCH}"
 
