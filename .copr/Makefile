@@ -13,3 +13,4 @@ srpm: spectool
 spectool:
 	curl -L -o "spectool" "https://pagure.io/rpmdevtools/raw/master/f/spectool.in"
 	chmod +x spectool
+	dnf install perl
