@@ -1,10 +1,5 @@
-srpm:
-	set -x ;\
-	URL=$$(rpmspec -P *.spec | awk '/Source:/ {print $$2}') ;\
-	echo "$${URL}" ;\
-	FILE=$$(basename "$${URL}") ;\
-	FILE=$$(echo "$${FILE%\?*}") ;\
-	curl -L -o "$${FILE}" "$${URL}" ;\
+srpm: spectool
+	./spectool -g *.spec ;\
 	rpmbuild --define "_sourcedir $$(pwd)" \
 	         --define "_specdir $$(pwd)" \
 	         --define "_builddir $$(pwd)" \
@@ -14,3 +9,7 @@ srpm:
 	         -bs \
 	         *.spec ;\
 	mv *.src.rpm "${outdir}"
+
+spectool:
+	curl -L -o "spectool" "https://pagure.io/rpmdevtools/raw/master/f/spectool.in"
+	chmod +x spectool
