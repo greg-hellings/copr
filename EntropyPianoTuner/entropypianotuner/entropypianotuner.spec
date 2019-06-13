@@ -6,7 +6,7 @@
 Summary:        Entropy Piano Tuner
 Name:           entropypianotuner
 Version:        1.2.0
-Release:        2.%{BRANCH_DATE}git%{BRANCH}%{?dist}
+Release:        4.%{BRANCH_DATE}git%{BRANCH}%{?dist}
 License:        GPL-3.0
 URL:            http://www.piano-tuner.org
 
@@ -96,6 +96,9 @@ desktop-file-install \
 
 
 %changelog
+* Thu Jun 13 2019 Greg Hellings <greg.hellings@gmail.com> - 1.2.0-3.20190107gitee7857ac
+- Bump build for Qt 5.12
+
 * Mon Jan 07 2019 Greg Hellings <greg.hellings@gmail.com> - 1.2.0-2.20190107gitee7857ac
 - Changed to building from git
 - Set minimum version for qtmidi
