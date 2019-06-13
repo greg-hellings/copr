@@ -6,7 +6,7 @@
 
 Name:           qtmidi
 Version:        0.1
-Release:        3.%{refdate}git%{refspec}%{?dist}
+Release:        4.%{refdate}git%{refspec}%{?dist}
 Summary:        %{_summary}
 License:        GPLv3
 Url:            https://gitlab.com/tp3/qtmidi
@@ -14,6 +14,7 @@ Url:            https://gitlab.com/tp3/qtmidi
 Source:         https://gitlab.com/tp3/qtmidi/repository/archive.tar.bz2?ref=%{refspec} #/archive.tar.bz2
 BuildRequires:  alsa-lib-devel
 BuildRequires:  qt5-qtbase-devel
+BuildRequires:  qt5-qtbase-private-devel
 BuildRequires:  qt5-qtquickcontrols2-devel
 #to create the forwarding headers
 BuildRequires:  perl
@@ -115,6 +116,9 @@ find %{buildroot}/%{_libdir} -type f -name '*pc' -print -exec perl -pi -e "s, -L
 %{_libdir}/qt5/examples/midi
 
 %changelog
+* Thu Jun 13 2019 Greg Hellings <greg.hellings@gmail.com> - 0.1-4.20190107git4ada7e12
+- Added qt5-qtbase-private-devel package for Qt 5.12 repackaging
+
 * Mon Jan 07 2019 Greg Hellings <greg.hellings@gmail.com> - 0.1-3.20190107git4ada7e12
 - Changed to using the head of git
 - Added dependence on QML
