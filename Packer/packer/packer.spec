@@ -2,7 +2,7 @@
 %global src_dir %{src_base}/%{name}
 
 Name:		packer
-Version:	1.4.0
+Version:	1.5.4
 Release:	1%{?dist}
 Summary:	Create machine and container images for multiple platforms
 License:	MPLv2.0
@@ -13,9 +13,9 @@ Source:		https://github.com/hashicorp/packer/archive/v%{version}.tar.gz
 ExclusiveArch:	%{go_arches}
 
 BuildRequires:	compiler(go-compiler)
-BuildRequires:	golang-github-hashicorp-go-uuid-devel
-BuildRequires:	golang-github-hashicorp-go-checkpoint-devel
-BuildRequires:	golang-github-hashicorp-go-cleanhttp-devel
+BuildRequires:	golang-github-hashicorp-uuid-devel
+BuildRequires:	golang-github-hashicorp-checkpoint-devel
+BuildRequires:	golang-github-hashicorp-cleanhttp-devel
 BuildRequires:	golang-github-mitchellh-cli-devel
 BuildRequires:	golang-github-kardianos-osext-devel
 
@@ -45,6 +45,9 @@ install -m 755 bin/packer %{buildroot}%{_bindir}/packerio
 %{_bindir}/packerio
 
 %changelog
+* Mon Feb 17 2020 Greg Hellings <greg.hellings@gmail.com> - 1.5.4-1
+- Upstream version 1.5.4
+
 * Wed May 01 2019 Greg Hellings <greg.hellings@gmail.com> - 1.4.0-1
 - Upstream version 1.4.0
 
