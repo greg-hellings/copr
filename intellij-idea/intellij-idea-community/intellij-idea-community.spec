@@ -22,7 +22,7 @@
 %endif
 
 Name:          intellij-idea-community
-Version:       2019.1.1
+Version:       2019.3.3
 Release:       1%{?dist}
 Summary:       Intelligent Java IDE
 License:       ASL 2.0
@@ -115,6 +115,9 @@ fi
 %license license/
 
 %changelog
+* Mon Feb 17 2019 Greg Hellings <greg.hellings@gmail.com> - 2019.3.3-1
+- Update to 2019.3.3
+
 * Wed May 01 2019 Greg Hellings <greg.hellings@gmail.com> - 2019.1.1-1
 - Update to 2019.1.1
 - Fixed builds for py2/3 deps, which were inverted
