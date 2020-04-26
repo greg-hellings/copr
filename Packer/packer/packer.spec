@@ -2,7 +2,7 @@
 %global src_dir %{src_base}/%{name}
 
 Name:		packer
-Version:	1.5.4
+Version:	1.5.5
 Release:	1%{?dist}
 Summary:	Create machine and container images for multiple platforms
 License:	MPLv2.0
@@ -45,6 +45,9 @@ install -m 755 bin/packer %{buildroot}%{_bindir}/packerio
 %{_bindir}/packerio
 
 %changelog
+* Sun Apr 26 2020 Greg Hellings <greg.hellings@gmail.com> - 1.5.5-1
+- Upstream version 1.5.5
+
 * Mon Feb 17 2020 Greg Hellings <greg.hellings@gmail.com> - 1.5.4-1
 - Upstream version 1.5.4
 
