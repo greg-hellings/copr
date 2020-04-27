@@ -6,7 +6,7 @@
 %define debug_package %{nil}
 # there are some python 2 and python 3 scripts so there is no way out to bytecompile them ^_^
 %global __os_install_post %(echo '%{__os_install_post}' | sed -e 's!/usr/lib[^[:space:]]*/brp-python-bytecompile[[:space:]].*$!!g')
-%global build_vers 20.6668.121
+%global build_vers 201.6668.121
 %global idea_name idea-IC
 
 %if 0%{?rhel} > 7 || 0%{?fedora} > 29 || 0%{?epel} > 7
@@ -118,12 +118,12 @@ fi
 * Sun Apr 26 2020 Greg Hellings <greg.hellings@gmail.com> - 2020.1-1
 - Update to 2020.1
 
-* Mon Feb 17 2019 Greg Hellings <greg.hellings@gmail.com> - 2019.3.3-1
-- Update to 2019.3.3
-
 * Wed May 01 2019 Greg Hellings <greg.hellings@gmail.com> - 2019.1.1-1
 - Update to 2019.1.1
 - Fixed builds for py2/3 deps, which were inverted
+
+* Mon Feb 17 2019 Greg Hellings <greg.hellings@gmail.com> - 2019.3.3-1
+- Update to 2019.3.3
 
 * Tue Nov 27 2018 Greg Hellings <greg.hellings@gmail.com> - 2018.3-1
 - Update to 2018.3
