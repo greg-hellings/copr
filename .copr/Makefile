@@ -1,5 +1,6 @@
-srpm: spectool
-	./spectool -g *.spec ;\
+srpm:
+	dnf install rpmdevtools;\
+	spectool -g *.spec ;\
 	rpmbuild --define "_sourcedir $$(pwd)" \
 	         --define "_specdir $$(pwd)" \
 	         --define "_builddir $$(pwd)" \
@@ -11,6 +12,6 @@ srpm: spectool
 	mv *.src.rpm "${outdir}"
 
 spectool:
-	curl -L -o "spectool" "https://pagure.io/rpmdevtools/raw/master/f/spectool.in"
+	curl -L -o "spectool" "https://pagure.io/rpmdevtools/raw/master/f/rpmdev-spectool"
 	chmod +x spectool
-	dnf install perl
+	dnf install rpmdevtools
