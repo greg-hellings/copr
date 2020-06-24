@@ -2,7 +2,7 @@
 %global src_dir %{src_base}/%{name}
 
 Name:		packer
-Version:	1.5.6
+Version:	1.6.0
 Release:	1%{?dist}
 Summary:	Create machine and container images for multiple platforms
 License:	MPLv2.0
@@ -45,6 +45,9 @@ install -m 755 bin/packer %{buildroot}%{_bindir}/packerio
 %{_bindir}/packerio
 
 %changelog
+* Wed Jun 24 2020 Greg Hellings <greg.hellings@gmail.com> - 1.6.0-1
+- Upsream version 1.6.0
+
 * Fri May 22 2020 Greg Hellings <greg.hellings@gmail.com> - 1.5.6-1
 - Upstream version 1.5.6
 
