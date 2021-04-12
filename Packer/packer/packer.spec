@@ -8,8 +8,7 @@ Summary:	Create machine and container images for multiple platforms
 License:	MPLv2.0
 URL:		https://www.packer.io/
 
-Source0:	https://github.com/hashicorp/packer/archive/v%{new_version}.tar.gz
-Source1:	https://github.com/hashicorp/packer/archive/v%{old_version}.tar.gz
+Source0:	https://github.com/hashicorp/packer/archive/v%{version}.tar.gz
 
 ExclusiveArch:	%{go_arches}
 
