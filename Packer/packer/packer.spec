@@ -1,19 +1,22 @@
 %global src_base src/github.com/hashicorp
 %global src_dir %{src_base}/%{name}
+%global old_version 1.6.6
+%global new_version 1.7.2
 
 Name:		packer
 # 1.7 introduces dependencies on features only in go 1.16+
 %if 0%{fedora} > 33
-Version:	1.7.2
+Version:	%{new_version}
 %else
-Version:	1.6.6
+Version:	%{old_version}
 %endif
 Release:	1%{?dist}
 Summary:	Create machine and container images for multiple platforms
 License:	MPLv2.0
 URL:		https://www.packer.io/
 
-Source:		https://github.com/hashicorp/packer/archive/v%{version}.tar.gz
+Source0:	https://github.com/hashicorp/packer/archive/v%{new_version}.tar.gz
+Source1:	https://github.com/hashicorp/packer/archive/v%{old_version}.tar.gz
 
 ExclusiveArch:	%{go_arches}
 
@@ -30,7 +33,16 @@ multiple platforms from a single source configuration.
 
 %prep
 mkdir -p %{src_base}
-tar xaf %{SOURCE0} -C %{src_base}
+
+# Uses different tarballs for each version
+tar xaf  \
+%if 0%{fedora} > 33
+%{SOURCE0} \
+%else
+%{SOURCE1} \
+%endif
+ -C %{src_base}
+
 mv %{src_dir}-%{version} %{src_dir}
 
 %build
