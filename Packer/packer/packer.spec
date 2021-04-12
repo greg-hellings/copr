@@ -2,7 +2,11 @@
 %global src_dir %{src_base}/%{name}
 
 Name:		packer
+%if 0%{fedora} > 33  # Introduces dep on golang 1.16 features
 Version:	1.7.2
+%else
+Version:	1.6.6
+%endif
 Release:	1%{?dist}
 Summary:	Create machine and container images for multiple platforms
 License:	MPLv2.0
@@ -46,7 +50,10 @@ install -m 755 bin/packer %{buildroot}%{_bindir}/packerio
 
 %changelog
 * Mon Apr 12 2021 Greg Hellings <greg.hellings@gmail.com> - 1.7.2-1
-- Upstream version 1.7.2
+- Upstream version 1.7.2 for Fedora 34+
+
+* Mon Apr 12 2021 Greg Hellings <greg.hellings@gmail.com> - 1.6.6-1
+- Upstream version 1.6.6 for Fedora 32/33
 
 * Tue Sep 01 2020 Greg Hellings <greg.hellings@gmail.com> - 1.6.2-1
 - Upstream version 1.6.2
