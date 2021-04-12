@@ -2,14 +2,13 @@
 %global src_dir %{src_base}/%{name}
 
 Name:		packer
-Version:	1.7.2
+Version:	1.6.6
 Release:	1%{?dist}
 Summary:	Create machine and container images for multiple platforms
 License:	MPLv2.0
 URL:		https://www.packer.io/
 
-Source0:	https://github.com/hashicorp/packer/archive/v%{new_version}.tar.gz
-Source1:	https://github.com/hashicorp/packer/archive/v%{old_version}.tar.gz
+Source0:	https://github.com/hashicorp/packer/archive/v%{version}.tar.gz
 
 ExclusiveArch:	%{go_arches}
 
@@ -46,9 +45,6 @@ install -m 755 bin/packer %{buildroot}%{_bindir}/packerio
 %{_bindir}/packerio
 
 %changelog
-* Mon Apr 12 2021 Greg Hellings <greg.hellings@gmail.com> - 1.7.2-1
-- Upstream version 1.7.2 for Fedora 34+
-
 * Mon Apr 12 2021 Greg Hellings <greg.hellings@gmail.com> - 1.6.6-1
 - Upstream version 1.6.6 for Fedora 32/33
 
