@@ -2,7 +2,8 @@
 %global src_dir %{src_base}/%{name}
 
 Name:		packer
-%if 0%{fedora} > 33  # Introduces dep on golang 1.16 features
+# 1.7 introduces dependencies on features only in go 1.16+
+%if 0%{fedora} > 33
 Version:	1.7.2
 %else
 Version:	1.6.6
