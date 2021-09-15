@@ -2,7 +2,7 @@
 %global src_dir %{src_base}/%{name}
 
 Name:		packer
-Version:	1.7.2
+Version:	1.7.5
 Release:	1%{?dist}
 Summary:	Create machine and container images for multiple platforms
 License:	MPLv2.0
@@ -45,6 +45,9 @@ install -m 755 bin/packer %{buildroot}%{_bindir}/packerio
 %{_bindir}/packerio
 
 %changelog
+* Wed Sep 15 2021 Greg Hellings <greg.hellings@gmail.com> - 1.7.5-1
+- Upstream version 1.7.5
+
 * Mon Apr 12 2021 Greg Hellings <greg.hellings@gmail.com> - 1.7.2-1
 - Upstream version 1.7.2 for Fedora 34+
 
