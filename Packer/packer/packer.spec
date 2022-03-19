@@ -13,20 +13,34 @@ Source0:	https://github.com/hashicorp/packer/archive/v%{version}.tar.gz
 ExclusiveArch:	%{go_arches}
 
 BuildRequires:	compiler(go-compiler)
-BuildRequires:	golang-github-hashicorp-uuid-devel
+BuildRequires:	golang(github.com/hashicorp/go-uuid)
 BuildRequires:	golang-github-hashicorp-checkpoint-devel
 BuildRequires:	golang-github-hashicorp-cleanhttp-devel
-BuildRequires:	golang-github-mitchellh-cli-devel
+BuildRequires:	golang(github.com/jehiah/go-strftime)
 BuildRequires:	golang-github-kardianos-osext-devel
+BuildRequires:	golang(github.com/klauspost/pgzip)
+BuildRequires:	golang(github.com/mitchellh/cli)
+BuildRequires:	golang(github.com/bugsnag/panicwrap)
+BuildRequires:	golang(github.com/mattn/go-tty)
+BuildRequires:	golang(github.com/masterzen/winrm)
+BuildRequires:	golang(github.com/mitchellh/prefixedio)
+BuildRequires:	golang(github.com/mitchellh/mapstructure)
+BuildRequires:	golang-github-pierrec-lz4-devel
+BuildRequires:	golang-github-shirou-gopsutil-devel
+BuildRequires:	golang-github-ulikunitz-xz-devel
+BuildRequires:	golang-github-zclconf-cty-devel
+BuildRequires:	golang-google-grpc-status-devel
 
 %description
 Packer is a tool for creating machine and container images for
 multiple platforms from a single source configuration.
 
 %prep
+rm -r %{src_base}
 mkdir -p %{src_base}
 tar xaf %{SOURCE0} -C %{src_base}
 mv %{src_dir}-%{version} %{src_dir}
+grep -l -r %{src_dir} -e panicwrap | xargs -l sed -i -e 's#mitchellh/panicwrap#bugsnag/panicwrap#'
 
 %build
 export GOPATH=$(pwd):%{gopath}
